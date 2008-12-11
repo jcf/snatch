@@ -1,0 +1,28 @@
+/* Start of CMSMS style sheet 'alphasights client styles' */
+h1#pageTitle {
+   color:#fff;
+}
+
+p.strapLine {
+    color:#fff;
+    width: 320px;
+}
+
+dl.runonlist {
+   margin:0;padding:0;
+   line-height:1.5em;
+}
+
+dl.runonlist dt{
+  position:static;
+width: 490px;
+
+}
+
+dl.runonlist dd{
+  position:static;
+   margin-left:0;
+   padding-left:0;
+}
+/* End of 'alphasights client styles' */
+

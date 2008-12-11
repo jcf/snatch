@@ -5,9 +5,11 @@ require "ftools"
 
 class Crawler
   def initialize(site_uri='cms.alphasights-001.vm.brightbox.net',
-                 wget_path='/usr/local/bin/wget')
+                 wget_path='/usr/local/bin/wget',
+                 git_path='/usr/local/git/bin/git')
     @site_uri = site_uri
     @wget_path = wget_path
+    @git_path = git_path
     sanity_check
   end
   
@@ -60,7 +62,7 @@ class Crawler
   end
   
   def git_push(s=@site_uri)
-    command = "#{@git_path} add #{s} && git commit -m 'Crawl as of #{Time.now.strftime}' && git push"
+    command = "#{@git_path} add #{s} && #{@git_path} commit -m 'Crawl as of #{Time.now.to_s}' && #{@git_path} push"
     $stdout.puts(command)
     system command
   end
@@ -69,3 +71,4 @@ end
 
 c = Crawler.new()
 c.wget
+c.git_push

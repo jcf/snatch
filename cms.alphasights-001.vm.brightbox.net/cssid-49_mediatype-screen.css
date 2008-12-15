@@ -1,6 +1,6 @@
 /* Start of CMSMS style sheet 'alphasights home styles' */
 a {
-    color:#7FBFDE;
+    color:#0d5e85;;
   
 }
 
@@ -11,11 +11,14 @@ h2 {
 
 div#primaryNav_bg{
    bottom:-1px;	
+   border-bottom:1px solid #000;
 }
 
 
 div#homecontentwrapper {
-    background:#242424 url(uploads/images/sitewide/css/home_bg.jpg) repeat-x;	
+    background:#242424 url(uploads/images/sitewide/css/home_bg.jpg) repeat-x;
+   background: #fff;
+    background: #fff url(uploads/images/sitewide/css/home_bg_white.png) repeat-x;   	
     padding-top:2em;
     float:left;
     width:1100px;
@@ -23,18 +26,20 @@ div#homecontentwrapper {
 
 div#homecontentwrapper p,div#homecontentwrapper ul{
    color:#fff;
+   color:#404040; 
    font-weight:normal;
    font-size:1.0em;
+   font-family: Arial, Helvetica, Sans-serif;
 }
 
 #column1{
 	background:none;
  	float:left;
-	width:250px; 
+	width:500px; 
 	padding:0px 10px 0px 20px;
 	height:30em;
 	position:relative;
-	border-right:1px solid #3b3b3b;
+	border-right:1px solid #9D9896;
 
  }
  
@@ -46,14 +51,16 @@ div#homecontentwrapper p,div#homecontentwrapper ul{
 	padding:0px 10px 0px 20px;
 	height:30em;
 	position:relative;
-	border-right:1px solid #3b3b3b;
+	border-right:1px solid #9D9896;
 }
 
 #column3 {
 	background:none;
 	float:right;
-	width:500px;
+	width:250px;
 	padding:0px 10px 0px 20px;
+        float:left;
+        padding-left:20px;
 	height:30em;
 	position:relative;
 }
@@ -73,7 +80,7 @@ h2.homeclients img{
 	width:3.8em;
 	font-size:1.2em;
 	background-color: transparent;
-	background-image: url(uploads/images/sections/clients_home_h2_bold.jpg);
+	background-image: url(uploads/images/sections/clients_home_h2_white.jpg);
 	background-repeat: no-repeat;
 	background-position:top left;
       	
@@ -97,7 +104,7 @@ h2.homeadvisors img{
 	width:3.83em;
 	font-size:1.6em;
 	background-color: transparent;
-	background-image: url(uploads/images/sections/advisors_home_h2_bold.png);
+	background-image: url(uploads/images/sections/advisors_home_h2_white.png);
 	background-repeat: no-repeat;
 	background-position:top left;
       	
@@ -121,7 +128,7 @@ h2.homealphasights img{
 	width:2.8em;
 	font-size:2.89em;
 	background-color: transparent;
-	background-image: url(uploads/images/sections/alphasights_home_h2_bold.png);
+	background-image: url(uploads/images/sections/alphasights_home_h2_white.png);
 	background-repeat: no-repeat;
 	background-position:top left;
       	
@@ -145,7 +152,9 @@ a.advisorsbtn{
 #footer {
 	display:block;
  border-top:none;	
- padding:20px 0 0 0;
+ border-top:20px solid #fff;
+padding:20px 0 0 0;
+padding:0 0 0 0;
  background:#242424;
  width:1100px;
 }
@@ -179,13 +188,15 @@ a.advisorsbtn{
 	
 }
 
+
 p.strapLine {
   font-weight:normal;
   font-size:1.3em;
   font-family:Arial, Helvetica, sans-serif;
-    color:#fff;
+    color:#000;
     width: 50em;
 }
+
 
 .firstblock{
    /*height:12em;*/
@@ -196,7 +207,7 @@ p{font-weight:normal;}
 
 
 h1#pageTitle {
-   color:#fff;
+   color:#000;
 font-weight:normal;
 }
 /* End of 'alphasights home styles' */

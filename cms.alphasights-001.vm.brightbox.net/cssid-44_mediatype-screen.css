@@ -12,5 +12,31 @@ p.strapLine {
     padding-right:15px;
 
 }
+
+#contactform{
+    margin-top:0;	
+}
+
+#ccontactform fieldset{
+    margin-top:0;	padding-top:0;
+}
+
+#ccontactform fieldset ol{
+    margin-top:0;	padding-top:0;
+}
+
+#contactform .sidepanelelement {
+    width:220px!important;
+}
+
+textarea#message {
+    width:220px;	
+   border: 1px solid #7C7573;
+   padding:4px;
+}
+
+#telephone{
+   display:none;
+}
 /* End of 'alphasights about styles' */
 

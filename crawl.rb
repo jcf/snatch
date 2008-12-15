@@ -176,8 +176,10 @@ class Crawler
                 "#{@options[:git_path]} add .",
                 "#{@options[:git_path]} commit #{'-q ' if $VERBOSE}-a -m 'Automatic crawl as of #{Time.now.to_s}'",
                 "#{@options[:git_path]} push"]
+    
+    commands.each { |cmd| puts "Executing: #{cmd}" }
+    
     command = commands.join(" && ")
-    puts "Executing: #{q command}"
     system command
   end
 

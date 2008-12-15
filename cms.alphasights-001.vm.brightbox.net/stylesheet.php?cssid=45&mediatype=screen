@@ -24,5 +24,59 @@ dl.runonlist dd{
    margin-left:0;
    padding-left:0;
 }
+
+
+.telephone {
+    display:none;
+}
+
+dl.namevaluepairlist {
+  margin:0;
+  padding:0;
+}
+
+dl.namevaluepairlist dt {
+   position:static; 
+   float:left;width:auto;
+   margin-right:10px;
+   padding-top:0.5em;
+}
+
+dl.namevaluepairlist dd {
+   margin-left:0;
+   padding-top:0.5em;
+}
+
+hr {
+  margin:0.5em 0 0.5em 0;
+  height: 1px;
+  color: #CCCCCC;
+}
+
+
+
+#clientrequestform{
+    margin-top:0;	
+}
+
+#clientrequestform fieldset{
+    margin-top:0;	padding-top:0;
+}
+
+#clientrequestform fieldset ol{
+    margin-top:0;	padding-top:0;
+}
+
+#clientrequestform .sidepanelelement {
+    width:220px!important;
+}
+
+textarea#request {
+    width:220px;	
+   border: 1px solid #7C7573;
+   padding:4px;
+}
+    
+    
 /* End of 'alphasights client styles' */
 

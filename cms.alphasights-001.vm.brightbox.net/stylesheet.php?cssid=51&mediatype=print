@@ -1,0 +1,63 @@
+/* Start of CMSMS style sheet 'alphasights_print styles' */
+body {
+   font-family: Arial, Helvetica, Sans-serif;
+   font-size:10pt;
+   color:#000;
+}
+
+#pageImage{
+    display:none;
+}
+
+#breadcrumb {
+   display:none;
+}
+
+#primaryNav_bg {
+   display:none;
+}
+
+#secnavcontainer {
+    display:none;
+}
+
+#clientrequestformsidepanel{
+   display:none;
+}
+
+#contactuspanel {
+    display:none;
+}
+
+#footer {
+   display:none;
+}
+
+#logo {
+   float:right;
+   border:none;
+}
+
+a img#logo {
+   border:none;  
+}
+
+#column1 img {
+    display:none;
+}
+
+#column2 img {
+    display:none;
+}
+
+#column3 img {
+    display:none;
+}
+
+a{
+   color: #404040;
+   text-decoration:underline;
+}
+
+/* End of 'alphasights_print styles' */
+

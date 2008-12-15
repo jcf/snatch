@@ -51,6 +51,7 @@ dl dd ul li{
 
 a.buttonlink {
    background:transparent url(uploads/images/sitewide/css/home_link_btn_bg.png) repeat-x;
+   background:transparent url(uploads/images/sitewide/css/home_link_btn_bg_light.png) repeat-x;
    width:13em;
    border:1px solid #444444;
    display:block;
@@ -83,12 +84,18 @@ h2 {
 }
 
 h3 {
+     color:#404040;
      padding-top:1.2em;
+     padding-bottom: 0.7em;
+     border-bottom:1px solid #7C7573;
 }
 
 h4 {
+     font-size:1.0em;
      color:#404040;
     padding-top:0.8em;
+    padding-bottom:0em;
+    margin-bottom:0.4em;
 }
 
 h2#pagetitle {
@@ -243,6 +250,7 @@ p.strapLine{
 
 #contentwrapper1 {
    background:#2d2d2d;
+        background: #F2F1F1;
    float:left;
    width:100%;
    position:relative;
@@ -279,6 +287,7 @@ p.strapLine{
 
 #left_column{
 	background: url(uploads/images/sitewide/css/left_col_bg.jpg) repeat-x;
+        background: #F2F1F1;
 	position:relative;
 	left:852px;
 	padding-bottom:280px;
@@ -520,7 +529,7 @@ div#primaryNav ul li a small {
    font-weight:bold;
     line-height:125%;
 	padding-left:8px;
-	background: url(uploads/images/sitewide/css/sec_nav_main.png) repeat-x;
+	background: url(uploads/images/sitewide/css/sec_nav_main_light.png) repeat-x;
 vertical-align:middle;
  }
 
@@ -539,11 +548,11 @@ vertical-align:middle;
 	border: 1px solid #444a4e;
 	display: block;
 	padding: 1px 5px 3px 20px;
-	color: #fff;
+	color: #000;
     font-size:0.95em;
     font-weight:normal;
 	text-decoration: none;
-	background: url(uploads/images/sitewide/css/sec_nav.png) repeat-x;
+	background: url(uploads/images/sitewide/css/sec_nav_light.png) repeat-x;
 }
 
 #secnavcontainer ul#secnav li a#sec_selected{
@@ -756,32 +765,11 @@ label, input, select, textarea {
 	
 }
 
-#clientrequestform .sidepanelelement {
-    width:220px!important;
-}
 
-textarea#request {
-    width:220px;	
-   border: 1px solid #7C7573;
-   padding:4px;
-}
-    
-    
 #formfeedback {
     display:none;	
 }
 
-#clientrequestform{
-    margin-top:0;	
-}
-
-#clientrequestform fieldset{
-    margin-top:0;	padding-top:0;
-}
-
-#clientrequestform fieldset ol{
-    margin-top:0;	padding-top:0;
-}
 
 .fieldrequired {
     color: #8A1A1C;
@@ -793,6 +781,17 @@ p.smalltext {
 	font-size:1.05em;
 }
 /* --------------- End of Form Styles ---------------- */
+
+
+/* ---------------- Style to override CMS wysiwig 'cleverness' --------- */
+
+body.mceContentBody{
+     background:#fff !important;
+     color:#000 !important;
+}
+
+/* -------------- End of styles for CMS --------------- */
+
 
 /* End of 'styles' */
 

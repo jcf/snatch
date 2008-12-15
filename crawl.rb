@@ -43,13 +43,18 @@ class Crawler
       opts.separator "Specific Options:"
 
       opts.on("-w", "--wget", String,
-      "Specify the full path to the wget binary (Must be at least version 1.12)" ) do |opt|
+              "Specify the full path to the wget binary (Must be at least version 1.12.)" ) do |opt|
         options[:wget_path] = opts
       end
 
       opts.on("-g", "--git", String,
-      "Specify the full path to the git binary" ) do |opt|
+              "Specify the full path to the git binary." ) do |opt|
         options[:git_path] = opts
+      end
+
+      opts.on("-m", "--message", String,
+              "Provide a custom commit message." ) do |opt|
+        options[:message] = opts
       end
 
       opts.separator "Common Options:"
@@ -113,8 +118,8 @@ class Crawler
   end # sanity_check
 
   def wget_sites_to_github(site_uris=[])
-    # site_uris.each { |s| @options[:site_uri] = s; wget(s) && git_push(s) }
-    site_uris.each { |site_uri| wget(site_uri) }
+    # site_uris.each { |site_uri| wget(site_uri) }
+    site_uris.each { |site_uri| wget(site_uri) && replace_php_css(site_uri) && git_push(site_uri) }
   end
 
   def wget(site_uri)
@@ -124,9 +129,6 @@ class Crawler
     command = "#{@options[:wget_path]} -rk#{'q' unless $VERBOSE} #{sq site_uri}"
     puts "Executing: #{q command}"
     system command
-    replace_php_css(site_uri)
-    
-    git_push
   end
 
   def replace_php_css(site_uri)
@@ -169,10 +171,10 @@ class Crawler
     end
   end
 
-  def git_push
-    commands = ["#{@options[:git_path]} rm -r --cached .",
+  def git_push(site_uri)
+    commands = ["#{@options[:git_path]} rm -r --cached #{sq site_uri}",
                 "#{@options[:git_path]} add .",
-                "#{@options[:git_path]} commit -a -m 'Automatic crawl as of #{Time.now.to_s}'",
+                "#{@options[:git_path]} commit #{'-q ' if $VERBOSE}-a -m 'Automatic crawl as of #{Time.now.to_s}'",
                 "#{@options[:git_path]} push"]
     command = commands.join(" && ")
     puts "Executing: #{q command}"
@@ -195,5 +197,4 @@ class Crawler
 end
 
 c = Crawler.new(ARGV)
-# c.run(:skip_wget => true)
-c.run
+c.run #(:skip_wget => true)

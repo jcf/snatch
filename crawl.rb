@@ -25,11 +25,8 @@ class Crawler
       exit
     end
 
-    if options[:test] == true
-      @sites.each { |s| replace_php_css(s) }
-    else
-      wget_sites_to_github(@sites)
-    end
+    wget_sites_to_github(@sites)
+
   end
 
   private
@@ -172,13 +169,19 @@ class Crawler
   end
 
   def git_push(site_uri)
+    if @options[:message].nil?
+      message = "Automatic crawl as of #{Time.now.to_s}"
+    else
+      message = @options[:message]
+    end
+    
     commands = ["#{@options[:git_path]} rm #{'-q ' unless $VERBOSE}-r --cached #{sq site_uri}",
                 "#{@options[:git_path]} add .",
-                "#{@options[:git_path]} commit #{'-q ' unless $VERBOSE}-a -m 'Automatic crawl as of #{Time.now.to_s}'",
+                "#{@options[:git_path]} commit #{'-q ' unless $VERBOSE}-a -m #{sq message}",
                 "#{@options[:git_path]} push"]
     
-    commands.each do |cmd|
-      puts "Executing: #{q cmd}"
+    commands.each do |command|
+      puts "Executing: #{q command}"
       system command
     end
   end
@@ -199,4 +202,4 @@ class Crawler
 end
 
 c = Crawler.new(ARGV)
-c.run #(:skip_wget => true)
+c.run(:test => true)

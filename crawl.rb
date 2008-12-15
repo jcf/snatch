@@ -172,7 +172,7 @@ class Crawler
   end
 
   def git_push(site_uri)
-    commands = ["#{@options[:git_path]} rm -r --cached #{sq site_uri}",
+    commands = ["#{@options[:git_path]} rm #{'-q ' if $VERBOSE}-r --cached #{sq site_uri}",
                 "#{@options[:git_path]} add .",
                 "#{@options[:git_path]} commit #{'-q ' if $VERBOSE}-a -m 'Automatic crawl as of #{Time.now.to_s}'",
                 "#{@options[:git_path]} push"]

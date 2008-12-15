@@ -49,11 +49,6 @@ class Crawler
         options[:git_path] = opts
       end
 
-      opts.on("-m", "--message", String,
-              "Provide a custom commit message." ) do |opt|
-        options[:message] = opts
-      end
-
       opts.separator "Common Options:"
 
       opts.on("-h", "--help",
@@ -169,15 +164,9 @@ class Crawler
   end
 
   def git_push(site_uri)
-    if @options[:message].nil?
-      message = "Automatic crawl as of #{Time.now.to_s}"
-    else
-      message = @options[:message]
-    end
-    
     commands = ["#{@options[:git_path]} rm #{'-q ' unless $VERBOSE}-r --cached #{sq site_uri}",
                 "#{@options[:git_path]} add .",
-                "#{@options[:git_path]} commit #{'-q ' unless $VERBOSE}-a -m #{sq message}",
+                "#{@options[:git_path]} commit #{'-q ' unless $VERBOSE}-a -m 'Automatic crawl as of #{Time.now.to_s}'",
                 "#{@options[:git_path]} push"]
     
     commands.each do |command|
@@ -202,4 +191,4 @@ class Crawler
 end
 
 c = Crawler.new(ARGV)
-c.run(:test => true)
+c.run

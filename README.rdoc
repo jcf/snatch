@@ -1,9 +1,17 @@
-== crawl.rb
+== Crawl
 
-*Crawl* a site. It's 00:27. I'm going to push and then `git commit` me to bed.
+*Crawl* a site.
 
-More work tomorrow.
+  c = Crawler.new
+  c.run
 
-    c = Crawler.new
-    c.wget
-    c.git_push
+Usage:
+  crawl.rb [OPTIONS] SITE_URI(s)
+
+  Specific Options:
+    -w, --wget                       Specify the full path to the wget binary (Must be at least version 1.12.)
+    -g, --git                        Specify the full path to the git binary.
+  Common Options:
+    -h, --help                       Show this message.
+
+You can pass multiple URIs to crawl.rb. You need to have wget v1.12 and git installed within $PATH. crawl.rb will optionally search for wget and git if they can not be found.

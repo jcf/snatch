@@ -250,7 +250,7 @@ p.strapLine{
 
 #contentwrapper1 {
    background:#2d2d2d;
-        background: #F2F1F1;
+        background: #7f7f7f;
    float:left;
    width:100%;
    position:relative;
@@ -287,7 +287,8 @@ p.strapLine{
 
 #left_column{
 	background: url(uploads/images/sitewide/css/left_col_bg.jpg) repeat-x;
-        background: #F2F1F1;
+	background: #7f7f7f url(uploads/images/sitewide/css/left_col_bg_light.jpg) repeat-x;
+       /* background: #404040;*/
 	position:relative;
 	left:852px;
 	padding-bottom:280px;
@@ -310,7 +311,7 @@ p.strapLine{
 }
 
 #breadcrumb{
-	background:#434343;	
+	background:#404040;	
 	font-size:0.9em;
 	border:none;
 
@@ -367,7 +368,7 @@ p.strapLine{
 #footer{
  color:#DEDCDC;
    font-size:0.8em;
-   background: #242424;
+   background: #404040;
    border-top:1px solid #525252;
    padding: 25px 10px 25px 10px;
    

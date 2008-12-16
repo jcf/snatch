@@ -18,7 +18,7 @@ div#primaryNav_bg{
 div#homecontentwrapper {
     background:#242424 url(uploads/images/sitewide/css/home_bg.jpg) repeat-x;
    background: #fff;
-    background: #fff url(uploads/images/sitewide/css/home_bg_white.png) repeat-x;   	
+    background: #fff url(uploads/images/sitewide/css/home_bg_white_rev.jpg) repeat-x bottom;   	
     padding-top:2em;
     float:left;
     width:1100px;
@@ -152,10 +152,10 @@ a.advisorsbtn{
 #footer {
 	display:block;
  border-top:none;	
- border-top:20px solid #fff;
+ border-top:20px solid #e9eced;
 padding:20px 0 0 0;
 padding:0 0 0 0;
- background:#242424;
+ background:#404040;
  width:1100px;
 }
 

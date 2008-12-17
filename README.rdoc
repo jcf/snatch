@@ -1,12 +1,12 @@
-== Crawl
+== Snatch
 
-*Crawl* a site.
+*Snatch* a site.
 
-  c = Crawler.new
-  c.run
+  snatch = Snatch.new
+  snatch.run
 
 Usage:
-  crawl.rb [OPTIONS] SITE_URI(s)
+  snatch.rb [OPTIONS] SITE_URI(s)
 
   Specific Options:
     -w, --wget                       Specify the full path to the wget binary (Must be at least version 1.12.)
@@ -14,4 +14,4 @@ Usage:
   Common Options:
     -h, --help                       Show this message.
 
-You can pass multiple URIs to crawl.rb. You need to have wget v1.12 and git installed within $PATH. crawl.rb will optionally search for wget and git if they can not be found.
+You can pass multiple URIs to snatch.rb. You need to have wget v1.12 and git installed within $PATH. snatch.rb will optionally search for wget and git if they can not be found.

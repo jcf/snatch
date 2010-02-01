@@ -1,6 +1,8 @@
 = snatch
 
-Description goes here.
+Ruby wrapper around wget to recursively download a site and copy it in to a public directory, typically within Rails.
+
+We use this gem to download the static files produced by a CMS used by our Marketing department and then serve them using Rack within our Rails app.
 
 == Note on Patches/Pull Requests
  

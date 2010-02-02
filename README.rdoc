@@ -16,4 +16,4 @@ We use this gem to download the static files produced by a CMS used by our Marke
 
 == Copyright
 
-Copyright (c) 2010 James Conroy-Finn. See LICENSE for details.
+Copyright (c) 2010 AlphaSights. See LICENSE for details.

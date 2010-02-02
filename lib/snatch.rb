@@ -4,7 +4,7 @@ require "#{File.dirname(__FILE__)}/extensions"
 require 'snatch/clean'
 
 class Snatch
-  PUBLIC_PATH = File.expand_path("#{File.dirname(__FILE__)}/../public")
+  PUBLIC_PATH = File.expand_path("#{Dir.pwd}/public")
 
   def initialize(url = nil)
     @url = url || 'www.google.com'

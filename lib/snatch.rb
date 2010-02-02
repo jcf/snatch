@@ -72,8 +72,12 @@ private
     end
   end
 
+  def files_to_remove
+    Dir.glob(File.join(PUBLIC_PATH, '**/*')).reject { |path| path =~ %r{public/packaged/} }
+  end
+
   def git_push
-    git :rm, "-rq --cached #{PUBLIC_PATH.quote}"
+    git :rm, "-rq --cached #{files_to_remove}"
     git :add, "public"
     git :commit, "-q -m 'Automatic snatch'"
     git :push, :silent => true

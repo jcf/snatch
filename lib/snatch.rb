@@ -13,6 +13,7 @@ class Snatch
     'images',
     'javascripts',
     'open-flash-chart.swf',
+    'packaged',
     'robots.txt',
     'stylesheets'
   ].map { |file_name| File.expand_path("#{RAILS_ROOT}/public/#{file_name}") }

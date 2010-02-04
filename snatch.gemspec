@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["James Conroy-Finn"]
-  s.date = %q{2010-02-02}
+  s.date = %q{2010-02-04}
   s.description = %q{Simple site downloaded that wraps wget and converts PHP CSS files in to regular CSS files.}
   s.email = %q{james@logi.cl}
   s.extra_rdoc_files = [

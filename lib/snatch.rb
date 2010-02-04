@@ -4,6 +4,18 @@ require "#{File.dirname(__FILE__)}/extensions"
 require 'snatch/clean'
 
 class Snatch
+  RAILS_PUBLIC_ASSETS  = [
+    '404.html',
+    '422.html',
+    '500.html',
+    'favicon.ico',
+    'iepngfix.htc',
+    'images',
+    'javascripts',
+    'open-flash-chart.swf',
+    'robots.txt',
+    'stylesheets'
+  ].map { |file_name| File.expand_path("#{RAILS_ROOT}/public/#{file_name}") }
   PUBLIC_PATH = File.expand_path("#{Dir.pwd}/public")
 
   def initialize(url = nil)
@@ -27,6 +39,7 @@ class Snatch
   end
 
   def fetch
+    remove_cms_files &&
     download_files &&
     convert_dynamic_stylesheets &&
     git_push
@@ -36,29 +49,27 @@ private
 
   def log(message)
     bang = "\e[36;40;1m=>\e[0m"
-    puts "#{bang} #{message}"
-  end
-
-  def which(name)
-    @which ||= {}
-    return @which[name] unless @which[name].nil?
-    path = `which #{name}`.strip
-    @which[name] = path
+    puts "#{bang} #{message[0..50]}..."
   end
 
   def wget(arguments = nil)
-    wget_path = which :wget
-    log "#{wget_path} #{arguments}"
-    %x{#{wget_path} #{arguments}}
+    log "wget #{arguments}"
+    %x{wget #{arguments}}
   end
 
   def git(command, *args)
     options   = args.last.is_a?(Hash) ? args.pop : {}
     arguments = args.join(' ')
     redirect  = ' > /dev/null' if options[:silent]
-    git_path  = which :git
-    log "#{git_path} #{command} #{arguments}#{redirect}"
-    %x(#{git_path} #{command} #{arguments}#{redirect})
+    log "git #{command} #{arguments}#{redirect}"
+    %x(git #{command} #{arguments}#{redirect})
+  end
+
+  def remove_cms_files
+    glob_path = File.expand_path("#{RAILS_ROOT}/public") + '/*'
+    Pathname.glob(glob_path) do |pathname|
+      pathname.rm_rf unless RAILS_PUBLIC_ASSETS.include?(pathname.expand_path('public').to_s)
+    end
   end
 
   def download_files
@@ -72,13 +83,8 @@ private
     end
   end
 
-  def files_to_remove
-    Dir.glob(File.join(PUBLIC_PATH, '**/*')).reject { |path| path =~ %r{public/packaged/} }
-  end
-
   def git_push
-    git :rm, "-rq --cached #{files_to_remove}"
-    git :add, "public"
+    git :add, "-A public"
     git :commit, "-q -m 'Automatic snatch'"
     git :push, :silent => true
   end

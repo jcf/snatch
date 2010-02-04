@@ -68,7 +68,7 @@ private
   def remove_cms_files
     glob_path = File.expand_path("#{RAILS_ROOT}/public") + '/*'
     Pathname.glob(glob_path) do |pathname|
-      File.rm_rf(pathname.to_s) unless RAILS_PUBLIC_ASSETS.include?(pathname.expand_path('public').to_s)
+      FileUtils.rm_rf(pathname.to_s) unless RAILS_PUBLIC_ASSETS.include?(pathname.expand_path('public').to_s)
     end
   end
 

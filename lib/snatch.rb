@@ -40,7 +40,7 @@ class Snatch
   end
 
   def fetch
-    remove_cms_files &&
+    remove_cms_files
     download_files &&
     convert_dynamic_stylesheets &&
     git_push

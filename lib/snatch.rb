@@ -65,7 +65,7 @@ class Snatch
     puts "#{bang} #{message[0..50]}..."
   end
 
-  def wget(arguments = nil)
+  def _wget(arguments = nil)
     log "wget #{arguments}"
     %x{wget #{arguments}}
   end
@@ -87,7 +87,7 @@ class Snatch
 
   def download_files
     puts "Downloading #{@url.quote}"
-    wget "-P #{PUBLIC_PATH} -nH -rkq #{@url.quote}"
+    _wget "-P #{PUBLIC_PATH} -nH -rkq #{@url.quote}"
   end
 
   def convert_dynamic_stylesheets

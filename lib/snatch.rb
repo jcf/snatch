@@ -30,23 +30,35 @@ class Snatch
   def self.wget
     new.send(:download_files)
   end
-  
+
+	def wget
+		download_files
+	end
+
   def self.clean
     new.send(:convert_dynamic_stylesheets)
   end
-  
+
+	def clean
+		convert_dynamic_stylesheets
+	end
+
   def self.push
     new.send(:git_push)
   end
 
+	def push
+		git_push
+	end
+
   def fetch
     remove_cms_files
     download_files &&
-    convert_dynamic_stylesheets &&
-    git_push
+    	convert_dynamic_stylesheets &&
+    	git_push
   end
 
-private
+	private
 
   def log(message)
     bang = "\e[36;40;1m=>\e[0m"

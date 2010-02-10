@@ -19,16 +19,15 @@ class Snatch
       instance
     end
 
-    # Loop through each link with a stylesheet rel attribute and remove
-    # dynamic PHP hrefs, replacing with plain CSS paths.
-    #
-    # Returns link tags
     def process
       @doc.css('link[rel=stylesheet]').each do |stylesheet_node|
         stylesheet_node['href'] = rewrite_href(stylesheet_node['href'])
       end
 
-      return unless @css_path
+      @doc.css('a[href]').each do |anchor|
+        anchor['href'].sub!(%r{\.html?$}, '')
+      end
+
       File.open(@file_name, 'w') { |f| f.write @doc.to_html }
     end
 

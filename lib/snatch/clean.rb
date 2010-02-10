@@ -7,7 +7,7 @@ class Snatch
     def initialize(file_name, working_directory = nil)
       @file_name         = file_name
       @working_directory = working_directory || Snatch::PUBLIC_PATH
-      @doc               = Nokogiri::HTML(File.open(@file_name, 'r'))
+      @doc               = Nokogiri::XML(File.open(@file_name, 'r'))
     end
 
     # Convenience method for creating Snatch::Clean with HTML.

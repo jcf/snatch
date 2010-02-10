@@ -36,11 +36,11 @@ class Snatch
 	end
 
   def self.clean
-    new.send(:convert_dynamic_stylesheets)
+    new.send(:process_lame_cms_files)
   end
 
 	def clean
-		convert_dynamic_stylesheets
+		process_lame_cms_files
 	end
 
   def self.push
@@ -90,7 +90,7 @@ class Snatch
     _wget "-P #{PUBLIC_PATH} -nH -rkq #{@url.quote}"
   end
 
-  def convert_dynamic_stylesheets
+  def process_lame_cms_files
     Dir.glob("#{PUBLIC_PATH}/**/*.html").each do |file|
       Clean.process(file, File.dirname(file))
     end

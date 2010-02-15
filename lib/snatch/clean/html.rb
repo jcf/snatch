@@ -12,8 +12,8 @@ class Snatch
 
         def encode_mailtos(a)
           if a['href'] =~ /^mailto:(.*)/
-            a['href'] = 'mailto:' + url_encode($1)
-            a.inner_html = html_encode(a.inner_html)
+            a['href'] = 'mailto:' + HTML.url_encode($1)
+            a.inner_html = HTML.html_encode(a.inner_html)
           end
         end
 
@@ -48,11 +48,11 @@ class Snatch
         new(doc, working_directory).update
       end
 
-      def html_encode(string)
+      def self.html_encode(string)
         string.gsub(/./){ |char| "&#x#{char.unpack('U')[0].to_s(16)};" }
       end
 
-      def url_encode(string)
+      def self.url_encode(string)
         string.gsub(/./) { |char| '%' + char.unpack('H2' * char.size).join('%').upcase }
       end
 
@@ -62,11 +62,13 @@ class Snatch
         @doc.search('//comment()').remove
 
         HrefFixMethods.instance_methods.each do |m|
-          @doc.css('a[href]').each { |a| send m, a }
+          klass = Class.new { include HrefFixMethods }.new
+          @doc.css('a[href]').each { |a| klass.send m, a }
         end
 
         SrcFixMethods.instance_methods.each do |m|
-          @doc.css('[src]').each { |a| send m, a }
+          klass = Class.new { include SrcFixMethods }.new
+          @doc.css('[src]').each { |a| klass.send m, a }
         end
       end
     end

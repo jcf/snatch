@@ -48,8 +48,8 @@ describe Snatch::Clean::HTML do
 
     it 'should encode email addresses' do
       anchor = %Q{<a href="mailto:blah@exåmplé.cøm">blah@exåmplé.cøm</a>}
-      subject.should_receive(:url_encode).and_return('url_encode')
-      subject.should_receive(:html_encode).and_return('html_encode')
+      @html.class.should_receive(:url_encode).and_return('url_encode')
+      @html.class.should_receive(:html_encode).and_return('html_encode')
       fix_node(:encode_mailtos, anchor) do |node|
         node.should have_href('mailto:url_encode')
         node.text.should == 'html_encode'

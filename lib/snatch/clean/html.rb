@@ -59,7 +59,7 @@ class Snatch
       def update
         @doc.css('base, meta[generator]').each { |node| node.remove }
 
-        @doc.children.reject! { |child| child.comment? }
+        @doc.search('//comment()').remove
 
         HrefFixMethods.instance_methods.each do |m|
           @doc.css('a[href]').each { |a| send m, a }

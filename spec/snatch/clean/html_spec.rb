@@ -15,19 +15,18 @@ describe Snatch::Clean::HTML do
     it 'should remove any base tags' do
       mock_nodes = [(mock_node = mock('nokogiri_node'))]
       @html.doc.should_receive(:css).with('base, meta[generator]').and_return(mock_nodes)
-      @html.doc.should_receive(:children).and_return([])
+      @html.doc.should_receive(:search).and_return(mock_node)
+      mock_node.should_receive(:remove).twice.and_return([])
       mock_nodes.should_receive(:each).and_yield(mock_node)
-      mock_node.should_receive(:remove)
       @html.send(:update)
     end
 
     it 'should remove comments and the generator meta tag' do
       mock_nodes = [(mock_node = mock('nokogiri_node'))]
       @html.doc.should_receive(:css).with('base, meta[generator]').and_return([])
-      @html.doc.should_receive(:children).twice.and_return(mock_nodes)
-      mock_node.should_receive(:comment?).and_return(true)
+      @html.doc.should_receive(:search).with('//comment()').and_return(mock_nodes)
+      mock_nodes.should_receive(:remove).and_return([mock_node])
       @html.send(:update) 
-      @html.doc.children.should be_empty
     end
   end
 

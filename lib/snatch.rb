@@ -1,9 +1,12 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
-require "#{File.dirname(__FILE__)}/extensions"
+require "extensions"
 require 'snatch/clean'
+require 'snatch/clean/html'
+require 'snatch/clean/css'
 
 class Snatch
+  RAILS_ROOT = Dir.pwd unless defined?(RAILS_ROOT)
   RAILS_PUBLIC_ASSETS  = [
     '404.html',
     '422.html',
@@ -18,6 +21,9 @@ class Snatch
     'stylesheets'
   ].map { |file_name| File.expand_path("#{RAILS_ROOT}/public/#{file_name}") }
   PUBLIC_PATH = File.expand_path("#{Dir.pwd}/public")
+
+  MARKETING_SITE = 'cms.alphasights-002.vm.brightbox.net'
+  UPLOADS_DIR = 'uploads'
 
   def initialize(url = nil)
     @url = url || 'www.google.com'
@@ -81,7 +87,8 @@ class Snatch
   def remove_cms_files
     glob_path = File.expand_path("#{RAILS_ROOT}/public") + '/*'
     Pathname.glob(glob_path) do |pathname|
-      FileUtils.rm_rf(pathname.to_s) unless RAILS_PUBLIC_ASSETS.include?(pathname.expand_path("#{RAILS_ROOT}/public").to_s)
+      public_path = pathname.expand_path("#{RAILS_ROOT}/public").to_s
+      FileUtils.rm_rf(pathname.to_s) unless RAILS_PUBLIC_ASSETS.include?(public_path)
     end
   end
 

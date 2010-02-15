@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{snatch}
-  s.version = "0.0.10"
+  s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["James Conroy-Finn"]
-  s.date = %q{2010-02-10}
+  s.date = %q{2010-02-15}
   s.description = %q{Simple site downloaded that wraps wget and converts PHP CSS files in to regular CSS files.}
   s.email = %q{james@logi.cl}
   s.extra_rdoc_files = [
@@ -17,7 +17,8 @@ Gem::Specification.new do |s|
      "README.rdoc"
   ]
   s.files = [
-    ".document",
+    ".autotest",
+     ".document",
      ".gitignore",
      "LICENSE",
      "README.rdoc",
@@ -26,11 +27,16 @@ Gem::Specification.new do |s|
      "lib/extensions.rb",
      "lib/snatch.rb",
      "lib/snatch/clean.rb",
+     "lib/snatch/clean/css.rb",
+     "lib/snatch/clean/html.rb",
      "snatch.gemspec",
+     "spec/snatch/clean/css_spec.rb",
+     "spec/snatch/clean/html_spec.rb",
      "spec/snatch/clean_spec.rb",
      "spec/snatch_spec.rb",
      "spec/spec.opts",
-     "spec/spec_helper.rb"
+     "spec/spec_helper.rb",
+     "spec/support/matchers/nokogiri.rb"
   ]
   s.homepage = %q{http://github.com/jcf/snatch}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -38,9 +44,12 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{wget your site and replace any nasty PHP CSS files}
   s.test_files = [
-    "spec/snatch/clean_spec.rb",
+    "spec/snatch/clean/css_spec.rb",
+     "spec/snatch/clean/html_spec.rb",
+     "spec/snatch/clean_spec.rb",
      "spec/snatch_spec.rb",
-     "spec/spec_helper.rb"
+     "spec/spec_helper.rb",
+     "spec/support/matchers/nokogiri.rb"
   ]
 
   if s.respond_to? :specification_version then

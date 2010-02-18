@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{snatch}
-  s.version = "1.0.2"
+  s.version = "1.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["James Conroy-Finn"]
-  s.date = %q{2010-02-15}
+  s.date = %q{2010-02-18}
   s.description = %q{Simple site downloaded that wraps wget and converts PHP CSS files in to regular CSS files.}
   s.email = %q{james@logi.cl}
   s.extra_rdoc_files = [
@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
      "lib/snatch/clean/css.rb",
      "lib/snatch/clean/html.rb",
      "snatch.gemspec",
+     "snatch.rb",
      "spec/snatch/clean/css_spec.rb",
      "spec/snatch/clean/html_spec.rb",
      "spec/snatch/clean_spec.rb",

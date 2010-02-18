@@ -40,11 +40,11 @@ describe Snatch::Clean::HTML do
     # end
 
     it 'should preserve parent directories within a URL' do
-      anchor = '<a href="/folder/child/file.extension"></a>'
+      anchor = '<a href="/folder/child/index.html"></a>'
       doc = Nokogiri::XML(anchor)
       @html.doc = doc
       @html.send(:update)
-      @html.doc.to_xhtml.strip.should == '<a href="/folder/child/file.extension"></a>'
+      @html.doc.to_xhtml.strip.should == '<a href="/folder/child/index.html"></a>'
     end
 
     it 'should replace an absolute CMS URL with a domainless absolute URL' do

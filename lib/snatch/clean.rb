@@ -20,7 +20,7 @@ class Snatch
       CSS.update(@doc, @working_directory)
       HTML.update(@doc, @working_directory)
 
-      File.open(@file_name, 'w') { |f| f.write @doc.to_html }
+      File.open(@file_name, 'w') { |f| f.write @doc.to_xhtml }
     end
   end
 end

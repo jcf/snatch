@@ -2,9 +2,9 @@ class Snatch
   class Clean
     class HTML
       module HrefFixMethods
-        def remove_index_html(a)
-          a['href'] = a['href'].sub(%r{index\.html?$}, '')
-        end
+        # def remove_index_html(a)
+        #   a['href'] = a['href'].sub(%r{index\.html?$}, '')
+        # end
 
         def replace_absolute(a)
           a['href'] = a['href'].sub(%r{(https?)://#{MARKETING_SITE}/}, '/')

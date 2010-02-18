@@ -33,10 +33,18 @@ describe Snatch::Clean::HTML do
   describe Snatch::Clean::HTML::HrefFixMethods do
     subject { mock.extend(Snatch::Clean::HTML::HrefFixMethods) }
 
-    it 'should remove a trailing index.html' do
-      fix_node(:remove_index_html, '<a href="/blah/index.html"></a>') do |node|
-        node.should have_href('/blah/')
-      end
+    # it 'should remove a trailing index.html' do
+    #   fix_node(:remove_index_html, '<a href="/blah/index.html"></a>') do |node|
+    #     node.should have_href('/blah/')
+    #   end
+    # end
+
+    it 'should preserve parent directories within a URL' do
+      anchor = '<a href="/folder/child/file.extension"></a>'
+      doc = Nokogiri::XML(anchor)
+      @html.doc = doc
+      @html.send(:update)
+      @html.doc.to_xhtml.strip.should == '<a href="/folder/child/file.extension"></a>'
     end
 
     it 'should replace an absolute CMS URL with a domainless absolute URL' do

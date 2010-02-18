@@ -54,6 +54,23 @@ describe Snatch::Clean::HTML do
       end
     end
 
+    describe 'appending index.html' do
+      it 'without an extension' do
+        node = fix_node(:append_index_html, '<a href="/folder"></a>')
+        node.should have_href('/folder/index.html')
+      end
+
+      it 'with an extension' do
+        node = fix_node(:append_index_html, '<a href="folder/file.txt"></a>"')
+        node.should have_href('folder/file.txt')
+      end
+
+      it 'with an absolute URL including a domain name' do
+        node = fix_node(:append_index_html, '<a href="http://domain.com/"></a>')
+        node.should have_href('http://domain.com/index.html')
+      end
+    end
+
     it 'should encode email addresses' do
       anchor = %Q{<a href="mailto:blah@exåmplé.cøm">blah@exåmplé.cøm</a>}
       @html.class.should_receive(:url_encode).and_return('url_encode')

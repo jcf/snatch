@@ -13,5 +13,5 @@ end
 def fix_node(method, xhtml)
   node = Nokogiri::XML(xhtml).children.first
   subject.send method, node
-  yield node
+  block_given? ? yield(node) : node
 end

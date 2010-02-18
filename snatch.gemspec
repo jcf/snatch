@@ -30,7 +30,6 @@ Gem::Specification.new do |s|
      "lib/snatch/clean/css.rb",
      "lib/snatch/clean/html.rb",
      "snatch.gemspec",
-     "snatch.rb",
      "spec/snatch/clean/css_spec.rb",
      "spec/snatch/clean/html_spec.rb",
      "spec/snatch/clean_spec.rb",

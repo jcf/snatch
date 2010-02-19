@@ -1,8 +1,6 @@
 class Snatch
   class Clean
     class HTML
-      require 'uri'
-
       module HrefFixMethods
         # def remove_index_html(a)
         #   a['href'] = a['href'].sub(%r{index\.html?$}, '')
@@ -26,7 +24,9 @@ class Snatch
         end
 
         def prepend_slash(a)
-          a['href'] = a['href'].sub(%r{^/?}, '/') unless a['href'].include?(':')
+          includes_colon   = a['href'].include?(':')
+          starts_with_dots = a['href'][0..1] == '..'
+          a['href'] = a['href'].sub(%r{^/?}, '/') unless includes_colon || starts_with_dots
         end
 
         def append_slash(a)

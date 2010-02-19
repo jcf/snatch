@@ -26,7 +26,7 @@ class Snatch
   UPLOADS_DIR = 'uploads'
 
   def initialize(url = nil)
-    @url = url || 'www.google.com'
+    @url = url || MARKETING_SITE
   end
 
   def self.fetch(url = nil)
@@ -94,7 +94,8 @@ class Snatch
 
   def download_files
     puts "Downloading #{@url.quote}"
-    _wget "-P #{PUBLIC_PATH} -nH -rkq #{@url.quote}"
+		url = @url.quote
+    _wget "-P #{PUBLIC_PATH} -B #{url} -nH -rkq #{url}"
   end
 
   def process_lame_cms_files

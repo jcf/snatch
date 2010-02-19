@@ -84,6 +84,11 @@ describe Snatch::Clean::HTML do
         node.should have_href('/folder/index.html')
       end
 
+      it 'should not append index.html to a login link' do
+        node = fix_node(:append_index_html, '<a href="/login"></a>')
+        node.should have_href('/login')
+      end
+
       it 'with an extension' do
         node = fix_node(:append_index_html, '<a href="folder/file.txt"></a>"')
         node.should have_href('folder/file.txt')

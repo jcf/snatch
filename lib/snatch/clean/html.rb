@@ -7,7 +7,7 @@ class Snatch
         # end
 
         def append_index_html(a)
-          unless File.extname(a['href']).include?('.')
+          unless File.extname(a['href']).include?('.') || a['href'].match(%r{login$})
             a['href'] = a['href'].sub(%r{/?$}, '') + '/index.html' 
           end
         end

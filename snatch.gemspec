@@ -36,7 +36,8 @@ Gem::Specification.new do |s|
      "spec/snatch_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb",
-     "spec/support/matchers/nokogiri.rb"
+     "spec/support/matchers/nokogiri.rb",
+     "xsl/pretty_print.xsl"
   ]
   s.homepage = %q{http://github.com/jcf/snatch}
   s.rdoc_options = ["--charset=UTF-8"]

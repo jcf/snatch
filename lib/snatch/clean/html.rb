@@ -24,9 +24,8 @@ class Snatch
         end
 
         def prepend_slash(a)
-          includes_colon   = a['href'].include?(':')
-          starts_with_dots = a['href'][0..1] == '..'
-          a['href'] = a['href'].sub(%r{^/?}, '/') unless includes_colon || starts_with_dots
+          includes_special_chars = !(%w(: .) & a['href'].split(//)).empty?
+          a['href'] = a['href'].sub(%r{^/?}, '/') unless includes_special_chars
         end
 
         def append_slash(a)
@@ -36,7 +35,7 @@ class Snatch
 
       module SrcFixMethods
         def replace_absolute(link)
-          link['src'] = link['src'].sub(%r{(https?)://#{MARKETING_SITE}/}, '/')
+          link['src'] = link['src'].sub(%r{^(https?)://#{MARKETING_SITE}/}, '/')
         end
 
         def rewrite_uploads(link)

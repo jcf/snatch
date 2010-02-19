@@ -48,11 +48,27 @@ describe Snatch::Clean::HTML do
     end
 
     it 'should preserve parent directories within a URL' do
-      anchor = '<a href="../relative/index.html"></a>'
+      anchor = '<a href="../relative/folder"></a>'
       doc = Nokogiri::XML(anchor)
       @html.doc = doc
       @html.send(:update)
-      @html.doc.to_xhtml.strip.should == '<a href="../relative/index.html"></a>'
+      @html.doc.to_xhtml.strip.should == '<a href="../relative/folder/index.html"></a>'
+    end
+
+    it 'should preserve parent directories within a URL' do
+      anchor = '<a href="http://cms.alphasights-002.vm.brightbox.net/advisor/our-guarantee"></a>"'
+      doc = Nokogiri::XML(anchor)
+      @html.doc = doc
+      @html.send(:update)
+      @html.doc.to_xhtml.strip.should == '<a href="/advisor/our-guarantee/index.html"></a>'
+    end
+
+    it 'should preserve parent directories within a URL' do
+      anchor = '<a href="our-guarantee/index.html"></a>"'
+      doc = Nokogiri::XML(anchor)
+      @html.doc = doc
+      @html.send(:update)
+      @html.doc.to_xhtml.strip.should == '<a href="our-guarantee/index.html"></a>'
     end
 
     it 'should replace an absolute CMS URL with a domainless absolute URL' do
@@ -91,8 +107,8 @@ describe Snatch::Clean::HTML do
 
     describe "leading slashes and colons" do
       it 'should append a slash when there is no colon' do
-        fix_node(:prepend_slash, %Q{<a href="blah/file.txt"></a>}) do |node|
-          node.should have_href('/blah/file.txt')
+        fix_node(:prepend_slash, %Q{<a href="blah/file"></a>}) do |node|
+          node.should have_href('/blah/file')
         end
       end
 

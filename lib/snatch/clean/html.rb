@@ -30,8 +30,7 @@ class Snatch
         end
 
         def append_slash(a)
-          slash_required = (%w(# : .) & a['href'].split(//)).empty?
-          a['href'] = a['href'].sub(%r{/?$}, '/') if slash_required
+          a['href'] = a['href'].sub(%r{/?$}, '/') if (%w(# : .) & a['href'].split(//)).empty?
         end
       end
 

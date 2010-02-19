@@ -106,16 +106,21 @@ describe Snatch::Clean::HTML do
     end
 
     describe "leading slashes and colons" do
-      it 'should append a slash when there is no colon' do
+      it 'should prepend a slash when there is no colon' do
         fix_node(:prepend_slash, %Q{<a href="blah/file"></a>}) do |node|
           node.should have_href('/blah/file')
         end
       end
 
-      it 'should not append a slash when there is a colon' do
+      it 'should not prepend a slash when there is a colon' do
         fix_node(:prepend_slash, %Q{<a href="blah/file:wtf.txt"></a>}) do |node|
           node.should have_href('blah/file:wtf.txt')
         end
+      end
+
+      it 'should always prepend a slash on an upload' do
+        node = fix_node(:prepend_slash, '<a href="uploads/document.pdf"></a>')
+        node.should have_href('/uploads/document.pdf')
       end
 
       it 'should not add two slashes' do

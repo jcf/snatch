@@ -24,8 +24,9 @@ class Snatch
         end
 
         def prepend_slash(a)
-          includes_special_chars = !(%w(: .) & a['href'].split(//)).empty?
-          a['href'] = a['href'].sub(%r{^/?}, '/') unless includes_special_chars
+          includes_special_chars = (%w(: .) & a['href'].split(//)).empty?
+          relative_upload = a['href'].match(/^#{UPLOADS_DIR}/)
+          a['href'] = a['href'].sub(%r{^/?}, '/') if includes_special_chars || relative_upload
         end
 
         def append_slash(a)

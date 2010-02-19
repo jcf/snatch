@@ -94,8 +94,7 @@ class Snatch
 
   def download_files
     puts "Downloading #{@url.quote}"
-		url = @url.quote
-    _wget "-P #{PUBLIC_PATH} -B #{url} -nH -rkq #{url}"
+    _wget "-P #{PUBLIC_PATH} -nH -rq #{@ur.quote}"
   end
 
   def process_lame_cms_files

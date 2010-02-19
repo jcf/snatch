@@ -13,7 +13,7 @@ class Snatch
         end
 
         def replace_absolute(a)
-          a['href'] = a['href'].sub(%r{(https?)://#{MARKETING_SITE}/}, '/')
+          a['href'] = a['href'].sub(%r{https?://#{MARKETING_SITE}/}, '/')
         end
 
         def encode_mailtos(a)

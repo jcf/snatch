@@ -41,7 +41,7 @@ class Snatch
         matches  = extract_path_components(href)
 
         unless matches.nil?
-          path = matches.size == 3 ? matches.shift : nil
+          path = matches.size == 3 ? matches.shift.sub(%r{^https?://#{MARKETING_SITE}}, '') : nil
 
           file_name = matches.join('-')
           css_path  = File.join(*[path, "#{file_name}.css"].compact)

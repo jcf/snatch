@@ -6,6 +6,14 @@ require 'snatch/clean/html'
 require 'snatch/clean/css'
 
 class Snatch
+  CLEAR      = "\e[0m"
+  BOLD       = "\e[1m"
+  RED        = "\e[31m"
+  YELLOW     = "\e[33m"
+  GREEN      = "\e[32m"
+  CYAN       = "\e[36m"
+  WHITE      = "\e[37m"
+
   RAILS_ROOT = Dir.pwd unless defined?(RAILS_ROOT)
   RAILS_PUBLIC_ASSETS  = [
     '404.html',
@@ -98,7 +106,9 @@ class Snatch
   end
 
   def process_lame_cms_files
-    Dir.glob("#{PUBLIC_PATH}/**/*.html").each do |file|
+    cms_html_files = Dir.glob("#{PUBLIC_PATH}/**/*.html") - RAILS_PUBLIC_ASSETS
+    cms_html_files.each do |file|
+			puts "#{GREEN}Cleaning #{file}#{CLEAR}"
       Clean.process(file, File.dirname(file))
     end
   end
@@ -109,3 +119,4 @@ class Snatch
     git :push, :silent => true
   end
 end
+

@@ -63,17 +63,17 @@ class Snatch
       end
 
       def update
-        @doc.css('base, meta[generator]').each { |node| node.remove }
+        @doc.css('base, meta[name=generator]').each { |node| node.remove }
 
         @doc.search('//comment()').remove
 
+        klass = Class.new { include HrefFixMethods }.new
         HrefFixMethods.instance_methods.each do |m|
-          klass = Class.new { include HrefFixMethods }.new
           @doc.css('a[href]').each { |a| klass.send m, a }
         end
 
+        klass = Class.new { include SrcFixMethods }.new
         SrcFixMethods.instance_methods.each do |m|
-          klass = Class.new { include SrcFixMethods }.new
           @doc.css('[src]').each { |a| klass.send m, a }
         end
       end

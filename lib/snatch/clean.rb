@@ -20,7 +20,14 @@ class Snatch
       CSS.update(@doc, @working_directory)
       HTML.update(@doc, @working_directory)
 
-      File.open(@file_name, 'w') { |f| f.write @doc.to_xhtml }
+      File.open(@file_name, 'w') { |f| f.write xsl.to_xhtml }
     end
+
+	private
+
+		def xsl
+			xsl_io = File.open(File.expand_path('../../../xsl/pretty_print.xsl', __FILE__))
+			Nokogiri::XSLT(xsl_io).apply_to(@doc)
+		end
   end
 end

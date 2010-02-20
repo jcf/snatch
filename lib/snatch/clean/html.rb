@@ -65,7 +65,7 @@ class Snatch
 
       def update
         @doc.css('base, meta[name=generator]').each do |node|
-          puts "Removing #{node.inspect]}"
+          puts "Removing #{node.inspect}"
           node.remove
         end
 

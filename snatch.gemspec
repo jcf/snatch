@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{snatch}
-  s.version = "1.0.12"
+  s.version = "1.0.13"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["James Conroy-Finn"]
-  s.date = %q{2010-02-19}
+  s.date = %q{2010-04-26}
   s.description = %q{Simple site downloaded that wraps wget and converts PHP CSS files in to regular CSS files.}
   s.email = %q{james@logi.cl}
   s.extra_rdoc_files = [
@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/jcf/snatch}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{wget your site and replace any nasty PHP CSS files}
   s.test_files = [
     "spec/snatch/clean/css_spec.rb",

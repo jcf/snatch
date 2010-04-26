@@ -64,15 +64,21 @@ class Snatch
       end
 
       def update
-        @doc.css('base, meta[name=generator]').each { |node| node.remove }
+        @doc.css('base, meta[name=generator]').each do |node|
+          puts "Removing #{node.inspect}"
+          node.remove
+        end
 
+        puts "Removing comments"
         @doc.search('//comment()').remove
 
+        puts "Rewriting anchor HREFs"
         klass = Class.new { include HrefFixMethods }.new
         HrefFixMethods.instance_methods.each do |m|
           @doc.css('a[href]').each { |a| klass.send m, a }
         end
 
+        puts "Rewriting SRCs"
         klass = Class.new { include SrcFixMethods }.new
         SrcFixMethods.instance_methods.each do |m|
           @doc.css('[src]').each { |a| klass.send m, a }
